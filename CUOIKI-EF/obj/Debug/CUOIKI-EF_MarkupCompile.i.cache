@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\
+D:\Nhom1 EF\CUOIKI-EF\obj\Debug\
 CUOIKI_EF
 none
 false
 DEBUG;TRACE
-C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\App.xaml
-9-564527866
+D:\Nhom1 EF\CUOIKI-EF\App.xaml
+25-1814910380
 2-1221702401
-44-217818240
-60-575651896
-MainWindow.xaml;UI\Forms\ProjectForm.xaml;UI\Forms\StageForm.xaml;UI\Forms\TeamForm.xaml;UI\Manager\AssignTaskPages\ProjectPage.xaml;UI\Manager\AssignTaskPages\StagePage.xaml;UI\Manager\AssignTaskPages\TeamMemberPage.xaml;UI\Manager\AssignTaskPages\TeamPage.xaml;UI\Manager\UI_ManagerForm.xaml;
+60-796087894
+60-243580852
+MainWindow.xaml;UI\Forms\ManagerTaskAssignmentForm.xaml;UI\Forms\ManageTeamMembersForm.xaml;UI\Forms\MemberTask.xaml;UI\Forms\ProjectForm.xaml;UI\Forms\StageForm.xaml;UI\Forms\TaskMngToTechlead.xaml;UI\Forms\TeamForm.xaml;UI\Forms\TeamMemberForm.xaml;UI\Forms\WorkLeaveForm.xaml;UI\HumanResources\MemberList.xaml;UI\HumanResources\UI_HrForm.xaml;UI\HumanResources\ViewSalary.xaml;UI\Manager\AssignTaskPages\ProjectPage.xaml;UI\Manager\AssignTaskPages\StagePage.xaml;UI\Manager\AssignTaskPages\TeamMemberPage.xaml;UI\Manager\AssignTaskPages\TeamPage.xaml;UI\Manager\AssignTaskPages\ViewTask.xaml;UI\Manager\CalcSalaryPage.xaml;UI\Manager\UI_ManagerForm.xaml;UI\Staff\InformationPage.xaml;UI\Staff\LeaveOfAbsenceForm.xaml;UI\Staff\StaffTaskManagementForm.xaml;UI\Staff\UI_StaffForm.xaml;UI\Staff\WorkSessionForm.xaml;
 
 True
 
