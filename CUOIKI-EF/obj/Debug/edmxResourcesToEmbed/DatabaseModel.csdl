@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__Manage__2A6B46EF" FromRole="Employees" ToRole="Projects" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__Assignee__37C5420D" FromRole="Employees" ToRole="Tasks" />
+    <NavigationProperty Name="Tasks1" Relationship="Self.FK__Tasks__Assigner__38B96646" FromRole="Employees" ToRole="Tasks" />
+    <NavigationProperty Name="TeamMembers" Relationship="Self.FK__TeamMembe__Emplo__34E8D562" FromRole="Employees" ToRole="TeamMembers" />
+    <NavigationProperty Name="Teams" Relationship="Self.FK__Teams__TechLeadI__3118447E" FromRole="Employees" ToRole="Teams" />
+    <NavigationProperty Name="WorkSessions" Relationship="Self.FK__WorkSessi__Emplo__278EDA44" FromRole="Employees" ToRole="WorkSessions" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ManagerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Projects__Manage__2A6B46EF" FromRole="Projects" ToRole="Employees" />
+    <NavigationProperty Name="Stages" Relationship="Self.FK__Stages__ProjectI__2D47B39A" FromRole="Projects" ToRole="Stages" />
+  </EntityType>
+  <EntityType Name="Stage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="Self.FK__Stages__ProjectI__2D47B39A" FromRole="Stages" ToRole="Projects" />
+    <NavigationProperty Name="Teams" Relationship="Self.FK__Teams__StageID__30242045" FromRole="Stages" ToRole="Teams" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Assignee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Assigner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartingTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndingTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Tasks__Assignee__37C5420D" FromRole="Tasks" ToRole="Employees" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK__Tasks__Assigner__38B96646" FromRole="Tasks" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="TeamMember">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeamID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__TeamMembe__Emplo__34E8D562" FromRole="TeamMembers" ToRole="Employees" />
+    <NavigationProperty Name="Team" Relationship="Self.FK__TeamMembe__TeamI__33F4B129" FromRole="TeamMembers" ToRole="Teams" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StageID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TechLeadID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Teams__TechLeadI__3118447E" FromRole="Teams" ToRole="Employees" />
+    <NavigationProperty Name="Stage" Relationship="Self.FK__Teams__StageID__30242045" FromRole="Teams" ToRole="Stages" />
+    <NavigationProperty Name="TeamMembers" Relationship="Self.FK__TeamMembe__TeamI__33F4B129" FromRole="Teams" ToRole="TeamMembers" />
+  </EntityType>
+  <EntityType Name="WorkSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartingTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndingTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__WorkSessi__Emplo__278EDA44" FromRole="WorkSessions" ToRole="Employees" />
+  </EntityType>
+  <Association Name="FK__Projects__Manage__2A6B46EF">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tasks__Assignee__37C5420D">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Assignee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tasks__Assigner__38B96646">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Assigner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__Emplo__34E8D562">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="TeamMembers" Type="Self.TeamMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TeamMembers">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teams__TechLeadI__3118447E">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Teams" Type="Self.Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="TechLeadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkSessi__Emplo__278EDA44">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="WorkSessions" Type="Self.WorkSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkSessions">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stages__ProjectI__2D47B39A">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Stages" Type="Self.Stage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stages">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teams__StageID__30242045">
+    <End Role="Stages" Type="Self.Stage" Multiplicity="1" />
+    <End Role="Teams" Type="Self.Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stages">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="StageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__TeamI__33F4B129">
+    <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+    <End Role="TeamMembers" Type="Self.TeamMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teams">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TeamMembers">
+        <PropertyRef Name="TeamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="databaseContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="Stages" EntityType="Self.Stage" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="TeamMembers" EntityType="Self.TeamMember" />
+    <EntitySet Name="Teams" EntityType="Self.Team" />
+    <EntitySet Name="WorkSessions" EntityType="Self.WorkSession" />
+    <AssociationSet Name="FK__Projects__Manage__2A6B46EF" Association="Self.FK__Projects__Manage__2A6B46EF">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__Assignee__37C5420D" Association="Self.FK__Tasks__Assignee__37C5420D">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__Assigner__38B96646" Association="Self.FK__Tasks__Assigner__38B96646">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__Emplo__34E8D562" Association="Self.FK__TeamMembe__Emplo__34E8D562">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="TeamMembers" EntitySet="TeamMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teams__TechLeadI__3118447E" Association="Self.FK__Teams__TechLeadI__3118447E">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkSessi__Emplo__278EDA44" Association="Self.FK__WorkSessi__Emplo__278EDA44">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="WorkSessions" EntitySet="WorkSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stages__ProjectI__2D47B39A" Association="Self.FK__Stages__ProjectI__2D47B39A">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Stages" EntitySet="Stages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teams__StageID__30242045" Association="Self.FK__Teams__StageID__30242045">
+      <End Role="Stages" EntitySet="Stages" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__TeamI__33F4B129" Association="Self.FK__TeamMembe__TeamI__33F4B129">
+      <End Role="Teams" EntitySet="Teams" />
+      <End Role="TeamMembers" EntitySet="TeamMembers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

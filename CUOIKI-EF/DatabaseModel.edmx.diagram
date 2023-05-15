@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b785336d05b457aa17424ce24af95af" Name="Diagram1">
+        <EntityTypeShape EntityType="DbModel.Employee" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Project" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Stage" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Task" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.TeamMember" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Team" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.WorkSession" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="DbModel.FK__Projects__Manage__2A6B46EF" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__Tasks__Assignee__37C5420D" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__Tasks__Assigner__38B96646" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__TeamMembe__Emplo__34E8D562" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__Teams__TechLeadI__3118447E" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__WorkSessi__Emplo__278EDA44" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__Stages__ProjectI__2D47B39A" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__Teams__StageID__30242045" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK__TeamMembe__TeamI__33F4B129" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
