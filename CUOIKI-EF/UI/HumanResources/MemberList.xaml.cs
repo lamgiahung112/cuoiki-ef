@@ -24,5 +24,10 @@ namespace CUOIKI_EF.UI.HumanResources
         {
             InitializeComponent();
         }
+
+        private void btn_ViewSalary_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewSalary());
+        }
     }
 }
