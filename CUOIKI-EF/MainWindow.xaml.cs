@@ -1,7 +1,9 @@
 ﻿using CUOIKI_EF.Controllers;
 using CUOIKI_EF.Enums;
 using CUOIKI_EF.States;
+using CUOIKI_EF.UI.HumanResources;
 using CUOIKI_EF.UI.Manager;
+using CUOIKI_EF.UI.Staff;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -78,20 +80,20 @@ namespace CUOIKI_EF
 
             if (foundEmployee.Role == EnumMapper.mapToString(Role.Manager))
             {
-                UI_ManagerForm uI_ManagerForm = new UI_ManagerForm();
+                UI_ManagerForm uI_ManagerForm = new();
                 uI_ManagerForm.Show();
 
             }
-            //else if (foundEmployee.Role == Role.Hr)
-            //{
-            //    UI_HrForm uI_HrForm = new();
-            //    uI_HrForm.Show();
-            //}
-            //else
-            //{
-            //    UI_StaffForm uI_StaffForm = new();
-            //    uI_StaffForm.Show();
-            //}
+            else if (foundEmployee.Role == Role.Hr)
+            {
+                UI_HrForm uI_HrForm = new();
+                uI_HrForm.Show();
+            }
+            else
+            {
+                UI_StaffForm uI_StaffForm = new();
+                uI_StaffForm.Show();
+            }
             this.Close();
         }
     }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Nhom1 EF\CUOIKI-EF\obj\Debug\
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\
 CUOIKI_EF
 none
 false
 DEBUG;TRACE
-D:\Nhom1 EF\CUOIKI-EF\App.xaml
-171266398968
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\App.xaml
+25-1814910380
 2-1221702401
-511087399801
-60-243580852
-MainWindow.xaml;UI\Forms\ManagerTaskAssignmentForm.xaml;UI\Forms\ManageTeamMembersForm.xaml;UI\Forms\MemberTask.xaml;UI\Forms\ProjectForm.xaml;UI\Forms\StageForm.xaml;UI\Forms\TaskMngToTechlead.xaml;UI\Forms\TeamForm.xaml;UI\Forms\TeamMemberForm.xaml;UI\Forms\WorkLeaveForm.xaml;UI\Manager\AssignTaskPages\ProjectPage.xaml;UI\Manager\AssignTaskPages\StagePage.xaml;UI\Manager\AssignTaskPages\TeamMemberPage.xaml;UI\Manager\AssignTaskPages\TeamPage.xaml;UI\Manager\AssignTaskPages\ViewTask.xaml;UI\Manager\CalcSalaryPage.xaml;UI\Manager\UI_ManagerForm.xaml;
+591577101281
+60-575651896
+MainWindow.xaml;UI\Forms\ManagerTaskAssignmentForm.xaml;UI\Forms\ManageTeamMembersForm.xaml;UI\Forms\MemberTask.xaml;UI\Forms\ProjectForm.xaml;UI\Forms\StageForm.xaml;UI\Forms\TaskMngToTechlead.xaml;UI\Forms\TeamForm.xaml;UI\Forms\TeamMemberForm.xaml;UI\Forms\WorkLeaveForm.xaml;UI\HumanResources\MemberList.xaml;UI\HumanResources\UI_HrForm.xaml;UI\HumanResources\ViewSalary.xaml;UI\Manager\AssignTaskPages\ProjectPage.xaml;UI\Manager\AssignTaskPages\StagePage.xaml;UI\Manager\AssignTaskPages\TeamMemberPage.xaml;UI\Manager\AssignTaskPages\TeamPage.xaml;UI\Manager\AssignTaskPages\ViewTask.xaml;UI\Manager\CalcSalaryPage.xaml;UI\Manager\UI_ManagerForm.xaml;UI\Staff\InformationPage.xaml;UI\Staff\LeaveOfAbsenceForm.xaml;UI\Staff\StaffTaskManagementForm.xaml;UI\Staff\UI_StaffForm.xaml;UI\Staff\WorkSessionForm.xaml;
 
-False
+True
 

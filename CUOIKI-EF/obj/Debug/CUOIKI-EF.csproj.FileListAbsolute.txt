@@ -326,3 +326,19 @@ D:\Nhom1 EF\CUOIKI-EF\obj\Debug\UI\Forms\TeamMemberForm.baml
 D:\Nhom1 EF\CUOIKI-EF\obj\Debug\UI\Forms\WorkLeaveForm.baml
 D:\Nhom1 EF\CUOIKI-EF\obj\Debug\UI\Manager\AssignTaskPages\ViewTask.baml
 D:\Nhom1 EF\CUOIKI-EF\obj\Debug\UI\Manager\CalcSalaryPage.baml
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Forms\ManagerTaskAssignmentForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Forms\ManageTeamMembersForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Forms\MemberTask.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Forms\TaskMngToTechlead.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Forms\TeamMemberForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Forms\WorkLeaveForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\HumanResources\MemberList.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\HumanResources\UI_HrForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\HumanResources\ViewSalary.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Manager\AssignTaskPages\ViewTask.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Manager\CalcSalaryPage.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Staff\InformationPage.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Staff\LeaveOfAbsenceForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Staff\StaffTaskManagementForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Staff\UI_StaffForm.g.cs
+C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\obj\Debug\UI\Staff\WorkSessionForm.g.cs
