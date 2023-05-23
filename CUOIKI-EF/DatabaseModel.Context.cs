@@ -16,7 +16,7 @@ namespace CUOIKI_EF
     public partial class DatabaseContext : DbContext
     {
         public DatabaseContext()
-            : base("name=databaseContext")
+            : base("name=DatabaseContext")
         {
         }
     
@@ -32,5 +32,6 @@ namespace CUOIKI_EF
         public virtual DbSet<TeamMember> TeamMembers { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<WorkSession> WorkSessions { get; set; }
+        public virtual DbSet<WorkLeave> WorkLeaves { get; set; }
     }
 }

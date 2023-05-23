@@ -14,7 +14,7 @@ namespace CUOIKI_EF.Controllers
         {
             using (var db = new DatabaseContext())
             {
-                Employee foundEmployee = db.Employees.Where(x => x.ID == id).First();
+                Employee foundEmployee = db.Employees.Where(x => x.ID == id).FirstOrDefault();
                 return foundEmployee != null && BCrypt.Net.BCrypt.Verify(password, foundEmployee.Password) ? foundEmployee : null;
             }
         }

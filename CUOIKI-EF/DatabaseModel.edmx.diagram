@@ -21,6 +21,7 @@
         <AssociationConnector Association="DbModel.FK__Stages__ProjectI__2D47B39A" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK__Teams__StageID__30242045" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK__TeamMembe__TeamI__33F4B129" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbModel.WorkLeave" Width="1.5" PointX="6.5" PointY="6.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

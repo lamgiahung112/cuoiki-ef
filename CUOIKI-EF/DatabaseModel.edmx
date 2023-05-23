@@ -4,234 +4,244 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Birth" Type="datetime" Nullable="false" />
-          <Property Name="EmployeeStatus" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Gender" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Role" Type="nvarchar" MaxLength="255" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Projects">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="ManagerID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Stages">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProjectID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tasks">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Assignee" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Assigner" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="StartingTime" Type="datetime" Nullable="false" />
-          <Property Name="EndingTime" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TeamMembers">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="TeamID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Teams">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StageID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="TechLeadID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
-        </EntityType>
-        <EntityType Name="WorkSessions">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
-          <Property Name="StartingTime" Type="datetime" Nullable="false" />
-          <Property Name="EndingTime" Type="datetime" />
-        </EntityType>
-        <Association Name="FK__Projects__Manage__2A6B46EF">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Projects">
-              <PropertyRef Name="ManagerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Stages__ProjectI__2D47B39A">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
-          <End Role="Stages" Type="Self.Stages" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Stages">
-              <PropertyRef Name="ProjectID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tasks__Assignee__37C5420D">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="Assignee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tasks__Assigner__38B96646">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="Assigner" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TeamMembe__Emplo__34E8D562">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="TeamMembers" Type="Self.TeamMembers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TeamMembers">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TeamMembe__TeamI__33F4B129">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="TeamMembers" Type="Self.TeamMembers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TeamMembers">
-              <PropertyRef Name="TeamID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Teams__StageID__30242045">
-          <End Role="Stages" Type="Self.Stages" Multiplicity="1" />
-          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stages">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Teams">
-              <PropertyRef Name="StageID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Teams__TechLeadI__3118447E">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Teams">
-              <PropertyRef Name="TechLeadID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WorkSessi__Emplo__278EDA44">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
-          <End Role="WorkSessions" Type="Self.WorkSessions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="WorkSessions">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DbModelStoreContainer">
-          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Stages" EntityType="Self.Stages" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TeamMembers" EntityType="Self.TeamMembers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WorkSessions" EntityType="Self.WorkSessions" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Projects__Manage__2A6B46EF" Association="Self.FK__Projects__Manage__2A6B46EF">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Projects" EntitySet="Projects" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Stages__ProjectI__2D47B39A" Association="Self.FK__Stages__ProjectI__2D47B39A">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="Stages" EntitySet="Stages" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tasks__Assignee__37C5420D" Association="Self.FK__Tasks__Assignee__37C5420D">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tasks__Assigner__38B96646" Association="Self.FK__Tasks__Assigner__38B96646">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TeamMembe__Emplo__34E8D562" Association="Self.FK__TeamMembe__Emplo__34E8D562">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="TeamMembers" EntitySet="TeamMembers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TeamMembe__TeamI__33F4B129" Association="Self.FK__TeamMembe__TeamI__33F4B129">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="TeamMembers" EntitySet="TeamMembers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Teams__StageID__30242045" Association="Self.FK__Teams__StageID__30242045">
-            <End Role="Stages" EntitySet="Stages" />
-            <End Role="Teams" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Teams__TechLeadI__3118447E" Association="Self.FK__Teams__TechLeadI__3118447E">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Teams" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WorkSessi__Emplo__278EDA44" Association="Self.FK__WorkSessi__Emplo__278EDA44">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="WorkSessions" EntitySet="WorkSessions" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="DbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DbModelStoreContainer">
+    <EntitySet Name="Employees" EntityType="DbModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projects" EntityType="DbModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stages" EntityType="DbModel.Store.Stages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tasks" EntityType="DbModel.Store.Tasks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TeamMembers" EntityType="DbModel.Store.TeamMembers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teams" EntityType="DbModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkSessions" EntityType="DbModel.Store.WorkSessions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkLeaves" EntityType="DbModel.Store.WorkLeaves" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Projects__Manage__2A6B46EF" Association="DbModel.Store.FK__Projects__Manage__2A6B46EF">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__Assignee__37C5420D" Association="DbModel.Store.FK__Tasks__Assignee__37C5420D">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__Assigner__38B96646" Association="DbModel.Store.FK__Tasks__Assigner__38B96646">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__Emplo__34E8D562" Association="DbModel.Store.FK__TeamMembe__Emplo__34E8D562">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="TeamMembers" EntitySet="TeamMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teams__TechLeadI__3118447E" Association="DbModel.Store.FK__Teams__TechLeadI__3118447E">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkSessi__Emplo__278EDA44" Association="DbModel.Store.FK__WorkSessi__Emplo__278EDA44">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="WorkSessions" EntitySet="WorkSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stages__ProjectI__2D47B39A" Association="DbModel.Store.FK__Stages__ProjectI__2D47B39A">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Stages" EntitySet="Stages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teams__StageID__30242045" Association="DbModel.Store.FK__Teams__StageID__30242045">
+      <End Role="Stages" EntitySet="Stages" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__TeamI__33F4B129" Association="DbModel.Store.FK__TeamMembe__TeamI__33F4B129">
+      <End Role="Teams" EntitySet="Teams" />
+      <End Role="TeamMembers" EntitySet="TeamMembers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Birth" Type="datetime" Nullable="false" />
+    <Property Name="EmployeeStatus" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ManagerID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ProjectID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Assignee" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Assigner" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="StartingTime" Type="datetime" Nullable="false" />
+    <Property Name="EndingTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TeamMembers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TeamID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmployeeID" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StageID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TechLeadID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WorkSessions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmployeeID" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="StartingTime" Type="datetime" Nullable="false" />
+    <Property Name="EndingTime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="WorkLeaves">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="ReasonOfLeave" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeeID" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Projects__Manage__2A6B46EF">
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Projects" Type="DbModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tasks__Assignee__37C5420D">
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Tasks" Type="DbModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Assignee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tasks__Assigner__38B96646">
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Tasks" Type="DbModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Assigner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__Emplo__34E8D562">
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="TeamMembers" Type="DbModel.Store.TeamMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TeamMembers">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teams__TechLeadI__3118447E">
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Teams" Type="DbModel.Store.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="TechLeadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkSessi__Emplo__278EDA44">
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="0..1" />
+    <End Role="WorkSessions" Type="DbModel.Store.WorkSessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkSessions">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stages__ProjectI__2D47B39A">
+    <End Role="Projects" Type="DbModel.Store.Projects" Multiplicity="1" />
+    <End Role="Stages" Type="DbModel.Store.Stages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stages">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teams__StageID__30242045">
+    <End Role="Stages" Type="DbModel.Store.Stages" Multiplicity="1" />
+    <End Role="Teams" Type="DbModel.Store.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stages">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="StageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__TeamI__33F4B129">
+    <End Role="Teams" Type="DbModel.Store.Teams" Multiplicity="1" />
+    <End Role="TeamMembers" Type="DbModel.Store.TeamMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teams">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TeamMembers">
+        <PropertyRef Name="TeamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -433,7 +443,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="databaseContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Stages" EntityType="Self.Stage" />
@@ -477,95 +487,116 @@
             <End Role="Teams" EntitySet="Teams" />
             <End Role="TeamMembers" EntitySet="TeamMembers" />
           </AssociationSet>
+          <EntitySet Name="WorkLeaves" EntityType="DbModel.WorkLeave" />
         </EntityContainer>
+        <EntityType Name="WorkLeave">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" />
+          <Property Name="ReasonOfLeave" Type="String" Nullable="false" />
+          <Property Name="EmployeeID" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="databaseContext">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="DbModel.Employee">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Birth" ColumnName="Birth" />
-                <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Projects">
-            <EntityTypeMapping TypeName="DbModel.Project">
-              <MappingFragment StoreEntitySet="Projects">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stages">
-            <EntityTypeMapping TypeName="DbModel.Stage">
-              <MappingFragment StoreEntitySet="Stages">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="DbModel.Task">
-              <MappingFragment StoreEntitySet="Tasks">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Assignee" ColumnName="Assignee" />
-                <ScalarProperty Name="Assigner" ColumnName="Assigner" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
-                <ScalarProperty Name="EndingTime" ColumnName="EndingTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TeamMembers">
-            <EntityTypeMapping TypeName="DbModel.TeamMember">
-              <MappingFragment StoreEntitySet="TeamMembers">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teams">
-            <EntityTypeMapping TypeName="DbModel.Team">
-              <MappingFragment StoreEntitySet="Teams">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="StageID" ColumnName="StageID" />
-                <ScalarProperty Name="TechLeadID" ColumnName="TechLeadID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WorkSessions">
-            <EntityTypeMapping TypeName="DbModel.WorkSession">
-              <MappingFragment StoreEntitySet="WorkSessions">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
-                <ScalarProperty Name="EndingTime" ColumnName="EndingTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DatabaseContext">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stages">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Stage)">
+        <MappingFragment StoreEntitySet="Stages">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Task)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Assignee" ColumnName="Assignee" />
+          <ScalarProperty Name="Assigner" ColumnName="Assigner" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
+          <ScalarProperty Name="EndingTime" ColumnName="EndingTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamMembers">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.TeamMember)">
+        <MappingFragment StoreEntitySet="TeamMembers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Team)">
+        <MappingFragment StoreEntitySet="Teams">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StageID" ColumnName="StageID" />
+          <ScalarProperty Name="TechLeadID" ColumnName="TechLeadID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkSessions">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.WorkSession)">
+        <MappingFragment StoreEntitySet="WorkSessions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
+          <ScalarProperty Name="EndingTime" ColumnName="EndingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkLeaves">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.WorkLeave)">
+        <MappingFragment StoreEntitySet="WorkLeaves">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="ReasonOfLeave" ColumnName="ReasonOfLeave" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -579,7 +610,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
