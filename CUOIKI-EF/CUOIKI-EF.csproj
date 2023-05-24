@@ -216,6 +216,7 @@
     <Compile Include="Enum\Role.cs" />
     <Compile Include="Enum\TaskStatus.cs" />
     <Compile Include="Enum\WorkSessionStatus.cs" />
+    <Compile Include="Factories\EmployeeFactory.cs" />
     <Compile Include="Factories\ProjectFactory.cs" />
     <Compile Include="Factories\StageFactory.cs" />
     <Compile Include="Factories\TeamFactory.cs" />
@@ -493,6 +494,7 @@
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
       <LastGenOutput>DatabaseModel1.cs</LastGenOutput>
     </Content>
+    <Content Include="DebugQuery.sql" />
     <Resource Include="UI\HumanResources\account.png" />
     <Resource Include="UI\Staff\account.png" />
     <Resource Include="UI\Manager\manager.png" />
