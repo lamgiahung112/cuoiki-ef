@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2023 21:20:58
--- Generated from EDMX file: C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\DatabaseModel.edmx
+-- Date Created: 05/24/2023 23:43:49
+-- Generated from EDMX file: D:\DoAnEF\CUOIKI-EF\DatabaseModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -18,9 +18,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__Projects__Manage__2A6B46EF]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Projects] DROP CONSTRAINT [FK__Projects__Manage__2A6B46EF];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Stages__ProjectI__2D47B39A]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Stages] DROP CONSTRAINT [FK__Stages__ProjectI__2D47B39A];
-GO
 IF OBJECT_ID(N'[dbo].[FK__Tasks__Assignee__37C5420D]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK__Tasks__Assignee__37C5420D];
 GO
@@ -30,17 +27,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__TeamMembe__Emplo__34E8D562]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TeamMembers] DROP CONSTRAINT [FK__TeamMembe__Emplo__34E8D562];
 GO
-IF OBJECT_ID(N'[dbo].[FK__TeamMembe__TeamI__33F4B129]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TeamMembers] DROP CONSTRAINT [FK__TeamMembe__TeamI__33F4B129];
-GO
-IF OBJECT_ID(N'[dbo].[FK__Teams__StageID__30242045]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Teams] DROP CONSTRAINT [FK__Teams__StageID__30242045];
-GO
 IF OBJECT_ID(N'[dbo].[FK__Teams__TechLeadI__3118447E]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Teams] DROP CONSTRAINT [FK__Teams__TechLeadI__3118447E];
 GO
 IF OBJECT_ID(N'[dbo].[FK__WorkSessi__Emplo__278EDA44]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[WorkSessions] DROP CONSTRAINT [FK__WorkSessi__Emplo__278EDA44];
+GO
+IF OBJECT_ID(N'[dbo].[FK__Stages__ProjectI__2D47B39A]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stages] DROP CONSTRAINT [FK__Stages__ProjectI__2D47B39A];
+GO
+IF OBJECT_ID(N'[dbo].[FK__Teams__StageID__30242045]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Teams] DROP CONSTRAINT [FK__Teams__StageID__30242045];
+GO
+IF OBJECT_ID(N'[dbo].[FK__TeamMembe__TeamI__33F4B129]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TeamMembers] DROP CONSTRAINT [FK__TeamMembe__TeamI__33F4B129];
 GO
 
 -- --------------------------------------------------
@@ -67,6 +67,9 @@ IF OBJECT_ID(N'[dbo].[Teams]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[WorkSessions]', 'U') IS NOT NULL
     DROP TABLE [dbo].[WorkSessions];
+GO
+IF OBJECT_ID(N'[dbo].[WorkLeaves]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[WorkLeaves];
 GO
 
 -- --------------------------------------------------
