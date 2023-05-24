@@ -198,7 +198,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="databaseContext" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DatabaseContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="Projects" EntityType="Self.Project" />
     <EntitySet Name="Stages" EntityType="Self.Stage" />
@@ -242,5 +242,16 @@
       <End Role="Teams" EntitySet="Teams" />
       <End Role="TeamMembers" EntitySet="TeamMembers" />
     </AssociationSet>
+    <EntitySet Name="WorkLeaves" EntityType="DbModel.WorkLeave" />
   </EntityContainer>
+  <EntityType Name="WorkLeave">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="FromDate" Type="DateTime" Nullable="false" />
+    <Property Name="ToDate" Type="DateTime" Nullable="false" />
+    <Property Name="ReasonOfLeave" Type="String" Nullable="false" />
+    <Property Name="EmployeeID" Type="String" Nullable="false" />
+  </EntityType>
 </Schema>

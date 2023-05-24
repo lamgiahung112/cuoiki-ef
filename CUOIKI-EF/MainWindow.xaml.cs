@@ -80,18 +80,18 @@ namespace CUOIKI_EF
 
             if (foundEmployee.Role == EnumMapper.mapToString(Role.Manager))
             {
-                UI_ManagerForm uI_ManagerForm = new();
+                UI_ManagerForm uI_ManagerForm = new UI_ManagerForm();
                 uI_ManagerForm.Show();
 
             }
-            else if (foundEmployee.Role == Role.Hr)
+            else if (foundEmployee.Role == EnumMapper.mapToString(Role.Hr))
             {
-                UI_HrForm uI_HrForm = new();
+                UI_HrForm uI_HrForm = new UI_HrForm();
                 uI_HrForm.Show();
             }
             else
             {
-                UI_StaffForm uI_StaffForm = new();
+                UI_StaffForm uI_StaffForm = new UI_StaffForm();
                 uI_StaffForm.Show();
             }
             this.Close();

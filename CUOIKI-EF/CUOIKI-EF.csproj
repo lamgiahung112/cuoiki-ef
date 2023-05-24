@@ -151,6 +151,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.9.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.9.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -197,6 +200,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -211,6 +219,9 @@
     <Compile Include="Factories\ProjectFactory.cs" />
     <Compile Include="Factories\StageFactory.cs" />
     <Compile Include="Factories\TeamFactory.cs" />
+    <Compile Include="Factories\WorkLeaveFactory.cs" />
+    <Compile Include="Helpers\FilterChain.cs" />
+    <Compile Include="Helpers\FilterKey.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Project.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
@@ -301,10 +312,15 @@
     <Compile Include="UI\Staff\WorkSessionForm.xaml.cs">
       <DependentUpon>WorkSessionForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LeavePageViewModel.cs" />
     <Compile Include="ViewModels\ProjectPageViewModel.cs" />
     <Compile Include="ViewModels\StagePageViewModel.cs" />
     <Compile Include="ViewModels\TeamPageViewModel.cs" />
+    <Compile Include="ViewModels\UserInformationViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="WorkLeave.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="WorkSession.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -470,10 +486,11 @@
       <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Content>
+    <Content Include="DatabaseModel.edmx.sql" />
     <Content Include="DatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+      <LastGenOutput>DatabaseModel1.cs</LastGenOutput>
     </Content>
     <Resource Include="UI\HumanResources\account.png" />
     <Resource Include="UI\Staff\account.png" />

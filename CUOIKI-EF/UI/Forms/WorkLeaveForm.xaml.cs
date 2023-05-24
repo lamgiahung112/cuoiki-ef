@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CUOIKI_EF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,10 @@ namespace CUOIKI_EF.UI.Forms
     /// </summary>
     public partial class WorkLeaveForm : Window
     {
-        public WorkLeaveForm()
+        public WorkLeaveForm(LeavePageViewModel vm)
         {
             InitializeComponent();
+            this.DataContext = vm;
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {

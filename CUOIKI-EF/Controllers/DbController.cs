@@ -116,7 +116,31 @@ namespace CUOIKI_EF.Controllers
                             select prj;
                 return query.ToList();
             }
-            
+        }
+
+        public T GetByID<T>(string id)
+        {
+            if (typeof(T) == typeof(Project))
+            {
+                return (T)(object)db.Projects.Where(x => x.ID == id).FirstOrDefault();
+            }
+            else if (typeof(T) == typeof(Stage))
+            {
+                return (T)(object)db.Stages.Where(x => x.ID == id).FirstOrDefault();
+            }
+            else if (typeof(T) == typeof(Team))
+            {
+                return (T)(object)db.Teams.Where(x => x.ID == id).FirstOrDefault();
+            }
+            else if (typeof(T) == typeof(Task))
+            {
+                return (T)(object)db.Tasks.Where(x => x.ID == id).FirstOrDefault();
+            }
+            else if (typeof(T) == typeof(WorkSession))
+            {
+                return (T)(object)db.WorkSessions.Where(x => x.ID == id).FirstOrDefault();
+            }
+            else return (T)(object)db.Employees.Where(x => x.ID == id).FirstOrDefault();
         }
 
         public List<Stage> GetStagesOfCurrentProject() 
@@ -133,6 +157,11 @@ namespace CUOIKI_EF.Controllers
         {
             string r = EnumMapper.mapToString(role);
             return db.Employees.Where(x => x.Role == r).ToList();
+        }
+
+        public List<WorkLeave> GetAllWorkLeavesOfEmployee(string employeeID)
+        {
+            return db.WorkLeaves.Where(x => x.EmployeeID == employeeID).ToList();
         }
     }
 }

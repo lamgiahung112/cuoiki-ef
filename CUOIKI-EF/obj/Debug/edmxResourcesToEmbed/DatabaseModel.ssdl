@@ -1,48 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="DbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DbModelStoreContainer">
+    <EntitySet Name="Employees" EntityType="DbModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projects" EntityType="DbModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stages" EntityType="DbModel.Store.Stages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tasks" EntityType="DbModel.Store.Tasks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TeamMembers" EntityType="DbModel.Store.TeamMembers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teams" EntityType="DbModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkSessions" EntityType="DbModel.Store.WorkSessions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkLeaves" EntityType="DbModel.Store.WorkLeaves" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Projects__Manage__2A6B46EF" Association="DbModel.Store.FK__Projects__Manage__2A6B46EF">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__Assignee__37C5420D" Association="DbModel.Store.FK__Tasks__Assignee__37C5420D">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tasks__Assigner__38B96646" Association="DbModel.Store.FK__Tasks__Assigner__38B96646">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__Emplo__34E8D562" Association="DbModel.Store.FK__TeamMembe__Emplo__34E8D562">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="TeamMembers" EntitySet="TeamMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teams__TechLeadI__3118447E" Association="DbModel.Store.FK__Teams__TechLeadI__3118447E">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkSessi__Emplo__278EDA44" Association="DbModel.Store.FK__WorkSessi__Emplo__278EDA44">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="WorkSessions" EntitySet="WorkSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stages__ProjectI__2D47B39A" Association="DbModel.Store.FK__Stages__ProjectI__2D47B39A">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Stages" EntitySet="Stages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teams__StageID__30242045" Association="DbModel.Store.FK__Teams__StageID__30242045">
+      <End Role="Stages" EntitySet="Stages" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__TeamI__33F4B129" Association="DbModel.Store.FK__TeamMembe__TeamI__33F4B129">
+      <End Role="Teams" EntitySet="Teams" />
+      <End Role="TeamMembers" EntitySet="TeamMembers" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Employees">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="Birth" Type="datetime" Nullable="false" />
-    <Property Name="EmployeeStatus" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Gender" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Role" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="EmployeeStatus" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="Projects">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="ManagerID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ManagerID" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Stages">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ProjectID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ProjectID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="Tasks">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Assignee" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Assigner" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Assignee" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Assigner" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="StartingTime" Type="datetime" Nullable="false" />
     <Property Name="EndingTime" Type="datetime" Nullable="false" />
-    <Property Name="Status" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
   </EntityType>
@@ -50,31 +96,41 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="TeamID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TeamID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmployeeID" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Teams">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="StageID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="TechLeadID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StageID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TechLeadID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="WorkSessions">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmployeeID" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="StartingTime" Type="datetime" Nullable="false" />
-    <Property Name="EndingTime" Type="datetime" />
+    <Property Name="EndingTime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="WorkLeaves">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="ReasonOfLeave" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeeID" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="FK__Projects__Manage__2A6B46EF">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-    <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Projects" Type="DbModel.Store.Projects" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
@@ -84,21 +140,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Stages__ProjectI__2D47B39A">
-    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
-    <End Role="Stages" Type="Self.Stages" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Stages">
-        <PropertyRef Name="ProjectID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Tasks__Assignee__37C5420D">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Tasks" Type="DbModel.Store.Tasks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
@@ -109,8 +153,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tasks__Assigner__38B96646">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Tasks" Type="DbModel.Store.Tasks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
@@ -121,8 +165,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TeamMembe__Emplo__34E8D562">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-    <End Role="TeamMembers" Type="Self.TeamMembers" Multiplicity="*" />
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="TeamMembers" Type="DbModel.Store.TeamMembers" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
@@ -132,33 +176,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TeamMembe__TeamI__33F4B129">
-    <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-    <End Role="TeamMembers" Type="Self.TeamMembers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teams">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TeamMembers">
-        <PropertyRef Name="TeamID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Teams__StageID__30242045">
-    <End Role="Stages" Type="Self.Stages" Multiplicity="1" />
-    <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Stages">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Teams">
-        <PropertyRef Name="StageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Teams__TechLeadI__3118447E">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-    <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="1" />
+    <End Role="Teams" Type="DbModel.Store.Teams" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
@@ -169,8 +189,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__WorkSessi__Emplo__278EDA44">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
-    <End Role="WorkSessions" Type="Self.WorkSessions" Multiplicity="*" />
+    <End Role="Employees" Type="DbModel.Store.Employees" Multiplicity="0..1" />
+    <End Role="WorkSessions" Type="DbModel.Store.WorkSessions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
@@ -180,49 +200,40 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DbModelStoreContainer">
-    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Stages" EntityType="Self.Stages" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TeamMembers" EntityType="Self.TeamMembers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="WorkSessions" EntityType="Self.WorkSessions" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Projects__Manage__2A6B46EF" Association="Self.FK__Projects__Manage__2A6B46EF">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="Projects" EntitySet="Projects" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Stages__ProjectI__2D47B39A" Association="Self.FK__Stages__ProjectI__2D47B39A">
-      <End Role="Projects" EntitySet="Projects" />
-      <End Role="Stages" EntitySet="Stages" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Tasks__Assignee__37C5420D" Association="Self.FK__Tasks__Assignee__37C5420D">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="Tasks" EntitySet="Tasks" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Tasks__Assigner__38B96646" Association="Self.FK__Tasks__Assigner__38B96646">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="Tasks" EntitySet="Tasks" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TeamMembe__Emplo__34E8D562" Association="Self.FK__TeamMembe__Emplo__34E8D562">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="TeamMembers" EntitySet="TeamMembers" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TeamMembe__TeamI__33F4B129" Association="Self.FK__TeamMembe__TeamI__33F4B129">
-      <End Role="Teams" EntitySet="Teams" />
-      <End Role="TeamMembers" EntitySet="TeamMembers" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Teams__StageID__30242045" Association="Self.FK__Teams__StageID__30242045">
-      <End Role="Stages" EntitySet="Stages" />
-      <End Role="Teams" EntitySet="Teams" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Teams__TechLeadI__3118447E" Association="Self.FK__Teams__TechLeadI__3118447E">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="Teams" EntitySet="Teams" />
-    </AssociationSet>
-    <AssociationSet Name="FK__WorkSessi__Emplo__278EDA44" Association="Self.FK__WorkSessi__Emplo__278EDA44">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="WorkSessions" EntitySet="WorkSessions" />
-    </AssociationSet>
-  </EntityContainer>
+  <Association Name="FK__Stages__ProjectI__2D47B39A">
+    <End Role="Projects" Type="DbModel.Store.Projects" Multiplicity="1" />
+    <End Role="Stages" Type="DbModel.Store.Stages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stages">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teams__StageID__30242045">
+    <End Role="Stages" Type="DbModel.Store.Stages" Multiplicity="1" />
+    <End Role="Teams" Type="DbModel.Store.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stages">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="StageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__TeamI__33F4B129">
+    <End Role="Teams" Type="DbModel.Store.Teams" Multiplicity="1" />
+    <End Role="TeamMembers" Type="DbModel.Store.TeamMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teams">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TeamMembers">
+        <PropertyRef Name="TeamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
