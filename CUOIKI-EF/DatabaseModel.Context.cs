@@ -13,9 +13,9 @@ namespace CUOIKI_EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseContext : DbContext
+    public partial class databaseContext : DbContext
     {
-        public DatabaseContext()
+        public databaseContext()
             : base("name=databaseContext")
         {
         }

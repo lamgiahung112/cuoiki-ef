@@ -6,20 +6,8 @@ using CUOIKI_EF.UI.Manager;
 using CUOIKI_EF.UI.Staff;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CUOIKI_EF
 {
@@ -67,7 +55,7 @@ namespace CUOIKI_EF
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             Employee foundEmployee = _authController.Login(txtUsername.Text, txtPassword.Password);
-
+            MessageBox.Show(txtPassword.Password);
             if (foundEmployee == null)
             {
                 MessageBox.Show("Invalid Credentials");
@@ -80,18 +68,18 @@ namespace CUOIKI_EF
 
             if (foundEmployee.Role == EnumMapper.mapToString(Role.Manager))
             {
-                UI_ManagerForm uI_ManagerForm = new();
+                UI_ManagerForm uI_ManagerForm = new UI_ManagerForm();
                 uI_ManagerForm.Show();
 
             }
-            else if (foundEmployee.Role == Role.Hr)
+            else if (foundEmployee.Role == EnumMapper.mapToString(Role.Hr))
             {
-                UI_HrForm uI_HrForm = new();
+                UI_HrForm uI_HrForm = new UI_HrForm();
                 uI_HrForm.Show();
             }
             else
             {
-                UI_StaffForm uI_StaffForm = new();
+                UI_StaffForm uI_StaffForm = new UI_StaffForm();
                 uI_StaffForm.Show();
             }
             this.Close();

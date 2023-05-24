@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="databaseContext">
     <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="DbModel.Employee">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Employee)">
         <MappingFragment StoreEntitySet="Employees">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -16,7 +16,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Projects">
-      <EntityTypeMapping TypeName="DbModel.Project">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Project)">
         <MappingFragment StoreEntitySet="Projects">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Stages">
-      <EntityTypeMapping TypeName="DbModel.Stage">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Stage)">
         <MappingFragment StoreEntitySet="Stages">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
@@ -36,7 +36,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tasks">
-      <EntityTypeMapping TypeName="DbModel.Task">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Task)">
         <MappingFragment StoreEntitySet="Tasks">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Assignee" ColumnName="Assignee" />
@@ -52,7 +52,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TeamMembers">
-      <EntityTypeMapping TypeName="DbModel.TeamMember">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.TeamMember)">
         <MappingFragment StoreEntitySet="TeamMembers">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TeamID" ColumnName="TeamID" />
@@ -61,7 +61,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Teams">
-      <EntityTypeMapping TypeName="DbModel.Team">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.Team)">
         <MappingFragment StoreEntitySet="Teams">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StageID" ColumnName="StageID" />
@@ -71,7 +71,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WorkSessions">
-      <EntityTypeMapping TypeName="DbModel.WorkSession">
+      <EntityTypeMapping TypeName="IsTypeOf(DbModel.WorkSession)">
         <MappingFragment StoreEntitySet="WorkSessions">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />

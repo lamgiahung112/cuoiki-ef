@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace CUOIKI_EF.Controllers
 {
@@ -12,10 +8,10 @@ namespace CUOIKI_EF.Controllers
 
         public Employee Login(string id, string password)
         {
-            using (var db = new DatabaseContext())
+            using (var db = new databaseContext())
             {
                 Employee foundEmployee = db.Employees.Where(x => x.ID == id).First();
-                return foundEmployee != null && BCrypt.Net.BCrypt.Verify(password, foundEmployee.Password) ? foundEmployee : null;
+                return foundEmployee != null && password == foundEmployee.Password ? foundEmployee : null;
             }
         }
     }

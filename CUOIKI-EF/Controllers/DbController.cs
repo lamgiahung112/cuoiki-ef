@@ -1,23 +1,18 @@
 ﻿using CUOIKI_EF.Enums;
 using CUOIKI_EF.States;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CUOIKI_EF.Controllers
 {
     public class DbController
     {
         private static DbController instance;
-        private static DatabaseContext db;
+        private static databaseContext db;
         private DbController()
         {
-            db = new DatabaseContext();
+            db = new databaseContext();
         }
 
         public static DbController Instance
@@ -99,10 +94,10 @@ namespace CUOIKI_EF.Controllers
             else if (LoginInfoState.Role == Role.TechLead)
             {
                 var query = from prj in db.Projects
-                        join stg in db.Stages on prj.ID equals stg.ProjectID
-                        join tm in db.Teams on stg.ID equals tm.StageID
-                        where tm.TechLeadID == LoginInfoState.Id
-                        select prj;
+                            join stg in db.Stages on prj.ID equals stg.ProjectID
+                            join tm in db.Teams on stg.ID equals tm.StageID
+                            where tm.TechLeadID == LoginInfoState.Id
+                            select prj;
                 return query.ToList();
             }
             else
@@ -116,14 +111,14 @@ namespace CUOIKI_EF.Controllers
                             select prj;
                 return query.ToList();
             }
-            
+
         }
 
-        public List<Stage> GetStagesOfCurrentProject() 
+        public List<Stage> GetStagesOfCurrentProject()
         {
             return db.Stages.Where(x => x.ProjectID == TaskAssignmentState.SelectedProject.ID).ToList();
         }
-    
+
         public List<Team> GetTeamsOfCurrentStage()
         {
             return db.Teams.Where(x => x.StageID == TaskAssignmentState.SelectedStage.ID).ToList();
