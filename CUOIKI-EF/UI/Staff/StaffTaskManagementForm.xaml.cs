@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CUOIKI_EF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace CUOIKI_EF.UI.Staff
         public StaffTaskManagementForm()
         {
             InitializeComponent();
+            DataContext = new StaffTaskManagementViewModel();
         }
     }
 }

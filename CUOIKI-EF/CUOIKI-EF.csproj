@@ -314,6 +314,7 @@
     </Compile>
     <Compile Include="ViewModels\LeavePageViewModel.cs" />
     <Compile Include="ViewModels\ProjectPageViewModel.cs" />
+    <Compile Include="ViewModels\StaffTaskManagementViewModel.cs" />
     <Compile Include="ViewModels\StagePageViewModel.cs" />
     <Compile Include="ViewModels\TeamPageViewModel.cs" />
     <Compile Include="ViewModels\UserInformationViewModel.cs" />

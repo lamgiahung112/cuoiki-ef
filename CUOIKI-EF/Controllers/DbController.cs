@@ -163,5 +163,10 @@ namespace CUOIKI_EF.Controllers
         {
             return db.WorkLeaves.Where(x => x.EmployeeID == employeeID).ToList();
         }
+
+        public List<Task> GetAllTasksOfEmployee(string employeeID)
+        {
+            return db.Tasks.Where(x => x.Assignee == employeeID).ToList();
+        }
     }
 }
