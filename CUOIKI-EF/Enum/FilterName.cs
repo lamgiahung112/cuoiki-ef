@@ -12,6 +12,7 @@ namespace CUOIKI_EF.Enums
         NeedReview,
         Done,
         InThisYear,
-        InThisMonth
+        InThisMonth,
+        InThisDay
     }
 }
