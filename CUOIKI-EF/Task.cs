@@ -24,6 +24,7 @@ namespace CUOIKI_EF
         public string Status { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime UpdatedAt { get; set; }
+        public string TeamID { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }
