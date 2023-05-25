@@ -96,6 +96,7 @@
     <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="TeamID" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="TeamMembers">
     <Key>
@@ -302,6 +303,7 @@
           <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Tasks__Assignee__37C5420D" FromRole="Tasks" ToRole="Employees" />
           <NavigationProperty Name="Employee1" Relationship="Self.FK__Tasks__Assigner__38B96646" FromRole="Tasks" ToRole="Employees" />
+          <Property Name="TeamID" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="TeamMember">
           <Key>
@@ -552,6 +554,7 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

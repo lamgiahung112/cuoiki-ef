@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/24/2023 23:43:49
--- Generated from EDMX file: D:\DoAnEF\CUOIKI-EF\DatabaseModel.edmx
+-- Date Created: 05/25/2023 11:44:51
+-- Generated from EDMX file: C:\Users\Admin\source\repos\CUOIKI-EF\CUOIKI-EF\DatabaseModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -118,7 +118,8 @@ CREATE TABLE [dbo].[Tasks] (
     [EndingTime] datetime  NOT NULL,
     [Status] nvarchar(255)  NOT NULL,
     [CreatedAt] datetime  NOT NULL,
-    [UpdatedAt] datetime  NOT NULL
+    [UpdatedAt] datetime  NOT NULL,
+    [TeamID] nvarchar(50)  NOT NULL
 );
 GO
 
@@ -154,7 +155,7 @@ CREATE TABLE [dbo].[WorkLeaves] (
     [FromDate] datetime  NOT NULL,
     [ToDate] datetime  NOT NULL,
     [ReasonOfLeave] nvarchar(max)  NOT NULL,
-    [EmployeeID] nvarchar(max)  NOT NULL
+    [EmployeeID] nvarchar(50)  NOT NULL
 );
 GO
 
